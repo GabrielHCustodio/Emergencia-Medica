@@ -49,5 +49,15 @@ export default new Vuex.Store({
                 { id: 4, kit: 'K0004' }
             ]
         }
+    },
+    getters: {
+        totalEnfermeiros(state) {
+            return state.enfermeiros.length
+        },
+        socorristasPorTurno(state) {
+            return turno => !turno ? state.socorristas : state.socorristas.filter(s => s.turno === turno)
+        },
+        totalSocorristas: state => state.socorristas.length,
+        totalSocorristasPorTurno: (state, getters) => turno => getters.socorristasPorTurno(turno).length
     }
 })
