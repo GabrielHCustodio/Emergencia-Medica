@@ -2,17 +2,17 @@
   <div>
     <div class="row">
       <div class="col">
-        <h5><i class="bi-boxes me-2"></i>Configuração da equipe</h5>
+        <h5><i class="bi-boxes me-2"></i>{{titulo}}</h5>
       </div>
     </div>
     <div class="row">
       <div class="col-8">
-        <p>Enfermeiro:</p>
-        <p>Socorrista:</p>
-        <p>Médico:</p>
-        <p>Carro:</p>
-        <p>Telefone:</p>
-        <p>Kit de reanimação:</p>
+        <p>Enfermeiro: {{ enfermeiro }}</p>
+        <p>Socorrista: {{ socorrista }}</p>
+        <p>Médico: {{ medico }}</p> 
+        <p>Carro: {{ carro }}</p>
+        <p>Telefone: {{ telefone }}</p>
+        <p>Kit de reanimação: {{ kitDeReanimacao}}</p>
       </div>
       <div class="col-4 text-center">
         <div class="row">
@@ -31,7 +31,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-    name: 'ConfiguracaoEquipe'
+    name: 'ConfiguracaoEquipe',
+    computed: {
+      ...mapState({
+        enfermeiro: state => state.equipe.enfermeiro,
+        socorrista: state => state.equipe.socorrista,
+        medico: state => state.equipe.medico,
+        carro: state => state.equipe.carro,
+        telefone: state => state.equipe.telefone,
+        kitDeReanimacao: state => state.equipe.kitDeReanimacao
+      }),
+      titulo() {
+        return 'Configuração da equipe'
+      }
+    }
 }
 </script>
