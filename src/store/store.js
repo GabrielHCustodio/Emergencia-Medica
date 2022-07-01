@@ -4,12 +4,12 @@ export default new Vuex.Store({
     state: {
         titulo: 'Emergencias Médicas',
         equipe: {
-            enfermeiro: 'Nome do enfermeiro',
-            socorrista: 'Nome do socorrista',
-            medico: 'Nome do médico',
-            carro: 'Placa do veículo',
-            telefone: '+55 35 00000-0000',
-            kitDeReanimacao: 'Kit 001',
+            enfermeiro: '',
+            socorrista: '',
+            medico: '',
+            carro: '',
+            telefone: '',
+            kitDeReanimacao: ''
         },
         enfermeiros: [
             { id: 1, nome: 'João', escala: '12x36'},
@@ -32,9 +32,9 @@ export default new Vuex.Store({
         equipamentos: {
             carros: [
                 { id: 1, placa: 'ABC-0000' },
-                { id: 2, placa: 'BRA1A11' },
+                { id: 2, placa: 'BRA-1A11' },
                 { id: 3, placa: 'CBA-1111' },
-                { id: 4, placa: 'ARB2B22' }
+                { id: 4, placa: 'ARB-2B22' }
             ],
             telefones: [
                 { id: 1, telefone: '+55 35 98888-8888' },
@@ -59,5 +59,18 @@ export default new Vuex.Store({
         },
         totalSocorristas: state => state.socorristas.length,
         totalSocorristasPorTurno: (state, getters) => turno => getters.socorristasPorTurno(turno).length
+    },
+    mutations: {
+        setItemEquipe(state,item) {
+            let d = item.dados
+            let t = item.tipo
+
+            if(t == 'enfermeiros') state.equipe.enfermeiro = d.nome
+            if(t == 'socorristas') state.equipe.socorrista = d.nome
+            if(t == 'medicos') state.equipe.medico = d.nome
+            if(t == 'carros') state.equipe.carro = d.placa
+            if(t == 'telefones') state.equipe.telefone = d.telefone
+            if(t == 'kits-de-reanimacao') state.equipe.kitDeReanimacao = d.kit
+        }
     }
 })

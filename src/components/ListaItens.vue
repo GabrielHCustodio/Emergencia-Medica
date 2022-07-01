@@ -8,7 +8,7 @@
                 <option value="noite">noite</option>
             </select>
         </div>
-        <item v-for="(item, indice) in itens" :key="indice" :dados="item"/>
+        <item v-for="(item, indice) in itens" :key="indice" :dados="item" :tipo="tipo"/>
         <div v-if="tipo == 'socorristas'">
             <span>Total: {{totalSocorristasPorTurno(turno)}}</span>
         </div>
@@ -35,7 +35,6 @@ export default {
     computed: {
         ...mapState({
             enfermeiros: state => state.enfermeiros,
-            //socorristas: state => state.socorristas,
             medicos: state => state.medicos,
             carros: state => state.equipamentos.carros,
             telefones: state => state.equipamentos.telefones,

@@ -8,16 +8,30 @@
         <div class="col-2" v-if="dados.escala">{{dados.escala}}</div>
         <div class="col-2" v-if="dados.turno">{{dados.turno}}</div>
         <div class="col-1">
-            <i class="bi-check2-square" style="cursor: pointer"></i>
+            <i class="bi-check2-square" style="cursor: pointer" @click="adicionarItem"></i>
         </div>
     </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
     name: 'Item',
     props: {
-        dados: Object
+        dados: Object,
+        tipo: String
+    },
+    methods: {
+        ...mapMutations(['setItemEquipe']),
+        adicionarItem() {
+            let item = {
+                tipo: this.tipo,
+                dados: this.dados
+            }
+
+            this.setItemEquipe(item)
+        }
     }
 }
-</script>
+</script> 
