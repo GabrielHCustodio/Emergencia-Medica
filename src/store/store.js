@@ -50,6 +50,15 @@ export default new Vuex.Store({
         },
         setMedicos: (state, payload) => {
             state.medicos = payload
+        },
+        setCarros: (state , {carros}) => {
+            state.equipamentos.carros = carros
+        },
+        setTelefones: (state , {telefones}) => {
+            state.equipamentos.telefones = telefones
+        },
+        setKitDeReanimacao: (state , {kitsDeReanimacao}) => {
+            state.equipamentos.kitsDeReanimacao = kitsDeReanimacao
         }
     }
 })

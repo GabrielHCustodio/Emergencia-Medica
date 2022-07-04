@@ -53,7 +53,7 @@ export default {
     msg: String
   },
   methods: {
-    ...mapMutations(['setEnfermeiros','setSocorristas','setMedicos'])
+    ...mapMutations(['setEnfermeiros','setSocorristas','setMedicos','setCarros','setTelefones','setKitDeReanimacao'])
   },
   computed: {
     titulo() {
@@ -72,6 +72,14 @@ export default {
     fetch('http://localhost:3000/medicos')
     .then(response => response.json())
     .then(dados => this.setMedicos(dados))
+
+    fetch('http://localhost:3000/equipamentos')
+    .then(response => response.json())
+    .then(dados => {
+      this.setCarros(dados)
+      this.setTelefones(dados)
+      this.setKitDeReanimacao(dados)
+    })
   }
 }
 </script>
