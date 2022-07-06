@@ -59,8 +59,23 @@ export default {
     methods: {
       montarEquipe() {
         let equipe = Object.assign({}, this.$store.state.equipe)
-        
-        this.$store.commit('adicionarEquipe', equipe)
+        if(this.validarForm()) {
+          alert('Equipe criada com sucesso!!!')
+          this.$store.commit('adicionarEquipe', equipe)
+        }
+        else {
+          alert('Verifique se todos os campos foram preenchidos com sucesso.')
+        }
+      },
+      validarForm() {
+        let valido = true
+        if(this.enfermeiro === '' ) valido = false
+        if(this.socorrista === '' ) valido = false
+        if(this.medico === '' ) valido = false
+        if(this.carro === '' ) valido = false
+        if(this.telefone === '' ) valido = false
+        if(this.kitDeReanimacao === '' ) valido = false
+        return valido
       }
     }
 }
