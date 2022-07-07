@@ -64,6 +64,10 @@ export default new Vuex.Store({
         adicionarEquipe: (state, payload) => {
             state.equipes.push(payload)
             state.equipe = {}
+        },
+        resetEquipe: (state, payload) => {
+            state.equipes = payload
+            alert('Equipes resetadas')
         }
     },
     actions: {

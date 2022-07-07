@@ -30,6 +30,12 @@
           <equipes />
         </div>
       </div>
+
+      <div class="row mb-2">
+        <div class="col">
+          <btn-reset />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +45,7 @@ import ConfiguracaoEquipe from './ConfiguracaoEquipe.vue'
 import Equipamentos from './Equipamentos.vue'
 import Equipes from './Equipes.vue'
 import Profissionais from './Profissionais.vue'
+import BtnReset from './BtnReset.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -46,7 +53,8 @@ export default {
     ConfiguracaoEquipe,
     Equipamentos,
     Equipes,
-    Profissionais
+    Profissionais,
+    BtnReset
   },
   name: 'Index',
   props: {
